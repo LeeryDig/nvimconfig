@@ -41,7 +41,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
   end,
 })
 
-vim.keymap.set("n", "<leader>c", function()
+vim.keymap.set("n", "<leader>vc", function()
   vim.cmd("vsplit")
   vim.cmd("terminal codex")
 end, { desc = "Abrir Codex em split vertical" })
