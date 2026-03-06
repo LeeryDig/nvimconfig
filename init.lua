@@ -37,12 +37,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
   end,
 })
 
--- Terminal horizontal (embaixo)
-vim.keymap.set("n", "<leader>th", function()
-  vim.cmd("split")
-  vim.cmd("terminal")
-end)
-
 -- Terminal vertical (lado)
 vim.keymap.set("n", "<leader>tv", function()
   vim.cmd("vsplit")
@@ -51,6 +45,7 @@ end)
 
 -- Sair do modo terminal com ESC
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]])
+vim.keymap.set("n", "<Esc>", ":nohlsearch<CR>", { silent = true })
 
 -- Redimensionar splits com Alt + setas
 vim.keymap.set("n", "<A-Up>", ":resize +2<CR>")
@@ -80,4 +75,9 @@ vim.api.nvim_create_autocmd("TermOpen", {
 vim.keymap.set("n", "<leader>vc", function()
   vim.cmd("vsplit")
   vim.cmd("terminal codex")
+end, { desc = "Abrir Codex em split vertical" })
+
+vim.keymap.set("n", "<leader>va", function()
+  vim.cmd("vsplit")
+  vim.cmd("terminal agent")
 end, { desc = "Abrir Codex em split vertical" })
