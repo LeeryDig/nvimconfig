@@ -1,6 +1,8 @@
 -- Leader key
 vim.g.mapleader = " "
 
+vim.opt.title = true
+
 -- NETRW BASE
 vim.g.netrw_banner = 0
 vim.g.netrw_liststyle = 3
@@ -36,6 +38,27 @@ vim.api.nvim_create_autocmd("VimEnter", {
     end
   end,
 })
+
+local function set_title()
+  local cwd = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+  local file = vim.fn.expand("%:t")
+
+  if file ~= "" then
+    vim.opt.titlestring = "📄 " .. file .. " — " .. cwd .. " — NVIM"
+  else
+    vim.opt.titlestring = "📦 " .. cwd .. " — NVIM"
+  end
+end
+
+vim.api.nvim_create_autocmd({ "BufEnter", "DirChanged" }, {
+  callback = set_title,
+})
+
+-- Terminal horizontal (embaixo)
+vim.keymap.set("n", "<leader>th", function()
+  vim.cmd("split")
+  vim.cmd("terminal")
+end)
 
 -- Terminal vertical (lado)
 vim.keymap.set("n", "<leader>tv", function()
