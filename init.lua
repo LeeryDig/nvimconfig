@@ -44,9 +44,9 @@ local function set_title()
   local file = vim.fn.expand("%:t")
 
   if file ~= "" then
-    vim.opt.titlestring = "📄 " .. file .. " — " .. cwd .. " — NVIM"
+    vim.opt.titlestring = "📄 " .. file .. ""
   else
-    vim.opt.titlestring = "📦 " .. cwd .. " — NVIM"
+    vim.opt.titlestring = "📦 " .. cwd .. ""
   end
 end
 
